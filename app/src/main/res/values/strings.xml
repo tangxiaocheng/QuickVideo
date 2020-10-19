@@ -1,0 +1,23 @@
+<resources>
+  <string name="app_name">QuickVideo</string>
+  <string name="title_home">RECORD</string>
+  <string name="title_dashboard">SAVED RECORDINGS</string>
+  <string name="please_input_an_tittle">Please input an title</string>
+  <string name="record">RECORD</string>
+  <string name="duration">Duration</string>
+  <string name="title">Tittle</string>
+  <string name="icon">icon</string>
+  <string name="title_activity_camera">CameraActivity</string>
+  <!-- Strings used for fragments for navigation -->
+  <string name="first_fragment_label">First Fragment</string>
+  <string name="second_fragment_label">Second Fragment</string>
+  <string name="next">Next</string>
+  <string name="previous">Previous</string>
+  <string name="stop">Stop</string>
+  <string name="description_info">Info</string>
+  <string name="permission_request">This sample needs permission for camera and audio recording.</string>
+  <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+  <string name="hello_first_fragment">Hello first fragment</string>
+  <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+  <string name="time_text_placeholder">2020:10:10 03:45</string>
+</resources>

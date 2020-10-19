@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="horizontal">
+
+  <FrameLayout
+    android:id="@+id/fl_camera_fragment"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" />
+
+  <TextView
+    android:id="@+id/tv_timer"
+    style="@style/TextAppearance.AppCompat.Headline"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@color/colorAccent"
+    android:gravity="center"
+    android:text="@string/record"
+    android:textColor="@color/white"
+    android:textSize="40sp" />
+
+</LinearLayout>
