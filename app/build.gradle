@@ -55,6 +55,9 @@ dependencies {
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
 //    testImplementation "com.google.truth:truth:1.0.1"
 //    testImplementation "com.google.truth.extensions:truth-java8-extension:1.0.1"
+
+    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
+//    implementation 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
 }
 repositories {
     mavenCentral()
