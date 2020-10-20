@@ -18,14 +18,15 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven { url "https://jitpack.io" }
     }
 }
 
 subprojects {
-//    project ->
-//    project.tasks.withType(JavaCompile) {
-//        dependsOn(installGitHooks)
-//    }
+    project ->
+        project.tasks.withType(JavaCompile) {
+            dependsOn(installGitHooks)
+        }
 
 
     repositories {
@@ -35,9 +36,9 @@ subprojects {
 
 }
 
-//googleJavaFormat {
-//    toolVersion = "1.7"
-//}
+googleJavaFormat {
+    toolVersion = "1.7"
+}
 
 ////////////////////////////////////////////////////////////////////////
 //
@@ -45,13 +46,13 @@ subprojects {
 ////////////////////////////////////////////////////////////////////////
 
 
-//tasks.register('installGitHooks', Copy) {
-//    from(file('config/hooks/pre-commit-stub')) {
-//        rename 'pre-commit-stub', 'pre-commit'
-//    }
-//    into file('.git/hooks')
-//    fileMode 0777
-//}
+tasks.register('installGitHooks', Copy) {
+    from(file('config/hooks/pre-commit-stub')) {
+        rename 'pre-commit-stub', 'pre-commit'
+    }
+    into file('.git/hooks')
+    fileMode 0777
+}
 ext {
     roomVersion = '2.2.5'
     archLifecycleVersion = '2.2.0'
