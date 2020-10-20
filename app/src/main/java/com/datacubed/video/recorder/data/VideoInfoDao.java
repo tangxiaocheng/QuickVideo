@@ -1,6 +1,7 @@
 package com.datacubed.video.recorder.data;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -21,4 +22,7 @@ public interface VideoInfoDao {
 
   @Query("SELECT * from video_table ORDER BY title ASC")
   List<VideoInfo> getVideoList();
+
+  @Query("SELECT * FROM video_table ORDER BY createdTime DESC")
+   public abstract DataSource.Factory<Integer, VideoInfo> pageSizeVideo();
 }
