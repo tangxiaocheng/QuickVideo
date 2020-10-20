@@ -33,10 +33,12 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
   }
 
   @Override
-  public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+  public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+  }
 
   @Override
-  public void onPageScrollStateChanged(int state) {}
+  public void onPageScrollStateChanged(int state) {
+  }
 
   @Override
   public void onNewVideoRecorded() {

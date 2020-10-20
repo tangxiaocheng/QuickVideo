@@ -82,6 +82,7 @@ public class HomeFragment extends Fragment {
   }
 
   public interface Callback {
+
     void onNewVideoRecorded();
   }
 }

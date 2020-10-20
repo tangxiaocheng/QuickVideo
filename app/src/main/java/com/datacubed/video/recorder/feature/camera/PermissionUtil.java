@@ -48,7 +48,7 @@ public class PermissionUtil {
    * Gets whether you should show UI with rationale for requesting permissions.
    *
    * @param permissions The permissions your app wants to request.
-   * @param context context
+   * @param context     context
    * @return Whether you can show permission rationale UI.
    */
   public static boolean shouldShowRequestPermissionRationale(

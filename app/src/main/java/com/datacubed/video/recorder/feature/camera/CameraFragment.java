@@ -69,25 +69,45 @@ import timber.log.Timber;
  */
 public class CameraFragment extends Fragment {
 
-  /** A {@link Semaphore} to prevent the app from exiting before closing the camera. */
+  /**
+   * A {@link Semaphore} to prevent the app from exiting before closing the camera.
+   */
   private final Semaphore semaphore = new Semaphore(1);
-  /** An {@link AutoFitTextureView} for camera preview. */
+  /**
+   * An {@link AutoFitTextureView} for camera preview.
+   */
   private AutoFitTextureView autoFitTextureView;
-  /** A reference to the opened {@link CameraDevice}. */
+  /**
+   * A reference to the opened {@link CameraDevice}.
+   */
   private CameraDevice cameraDevice;
-  /** A reference to the current {@link CameraCaptureSession} for preview. */
+  /**
+   * A reference to the current {@link CameraCaptureSession} for preview.
+   */
   private CameraCaptureSession previewSession;
-  /** The {@link Size} of camera preview. */
+  /**
+   * The {@link Size} of camera preview.
+   */
   private Size previewSize;
-  /** The {@link Size} of video recording. */
+  /**
+   * The {@link Size} of video recording.
+   */
   private Size videoSize;
-  /** MediaRecorder */
+  /**
+   * MediaRecorder
+   */
   private MediaRecorder mediaRecorder;
-  /** Whether the app is recording video now */
+  /**
+   * Whether the app is recording video now
+   */
   private boolean isRecording;
-  /** An additional thread for running tasks that shouldn't block the UI. */
+  /**
+   * An additional thread for running tasks that shouldn't block the UI.
+   */
   private HandlerThread handlerThread;
-  /** A {@link Handler} for running tasks in the background. */
+  /**
+   * A {@link Handler} for running tasks in the background.
+   */
   private Handler backgroundHandler;
 
   private CountDownTimer countDownTimer;
@@ -121,12 +141,15 @@ public class CameraFragment extends Fragment {
         }
 
         @Override
-        public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {}
+        public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {
+        }
       };
 
   private int duration = DEFAULT_DURATION;
   private long createdTime;
-  /** {@link CameraDevice.StateCallback} is called when {@link CameraDevice} changes its status. */
+  /**
+   * {@link CameraDevice.StateCallback} is called when {@link CameraDevice} changes its status.
+   */
   private final CameraDevice.StateCallback mStateCallback =
       new CameraDevice.StateCallback() {
 
@@ -260,14 +283,18 @@ public class CameraFragment extends Fragment {
   //    }
   //  }
 
-  /** Starts a background thread and its {@link Handler}. */
+  /**
+   * Starts a background thread and its {@link Handler}.
+   */
   private void startBackgroundThread() {
     handlerThread = new HandlerThread("CameraBackground");
     handlerThread.start();
     backgroundHandler = new Handler(handlerThread.getLooper());
   }
 
-  /** Stops the background thread and its {@link Handler}. */
+  /**
+   * Stops the background thread and its {@link Handler}.
+   */
   private void stopBackgroundThread() {
     handlerThread.quitSafely();
     try {
@@ -279,7 +306,9 @@ public class CameraFragment extends Fragment {
     }
   }
 
-  /** Tries to open a {@link CameraDevice}. The result is listened by `mStateCallback`. */
+  /**
+   * Tries to open a {@link CameraDevice}. The result is listened by `mStateCallback`.
+   */
   @SuppressWarnings("MissingPermission")
   private void openCamera(int width, int height) {
     CameraManager manager =
@@ -342,7 +371,9 @@ public class CameraFragment extends Fragment {
     }
   }
 
-  /** Start the camera preview. */
+  /**
+   * Start the camera preview.
+   */
   private void startPreview() {
     if (null == cameraDevice || !autoFitTextureView.isAvailable() || null == previewSize) {
       return;
@@ -379,7 +410,9 @@ public class CameraFragment extends Fragment {
     }
   }
 
-  /** Update the camera preview. {@link #startPreview()} needs to be called in advance. */
+  /**
+   * Update the camera preview. {@link #startPreview()} needs to be called in advance.
+   */
   private void updatePreview() {
     if (null == cameraDevice) {
       return;
@@ -407,7 +440,7 @@ public class CameraFragment extends Fragment {
    * not to be called until the camera preview size is determined in openCamera, or until the size
    * of `mTextureView` is fixed.
    *
-   * @param viewWidth The width of `mTextureView`
+   * @param viewWidth  The width of `mTextureView`
    * @param viewHeight The height of `mTextureView`
    */
   private void configureTransform(int viewWidth, int viewHeight) {

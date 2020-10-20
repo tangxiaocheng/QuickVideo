@@ -22,7 +22,7 @@ public class Constant {
   public static final String TAG = "Camera2VideoFragment";
   public static final int REQUEST_CODE_VIDEO_PERMISSIONS = 1;
   public static final String[] VIDEO_PERMISSIONS = {
-    Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO,
+      Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO,
   };
 
   static {

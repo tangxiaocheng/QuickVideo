@@ -12,8 +12,7 @@
     android:textSize="28sp"
     app:layout_constraintEnd_toStartOf="@id/guideline_vertical_right"
     app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
-    app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_bottom"
-    />
+    app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_bottom" />
   <TextView
     android:id="@+id/title_label_tv"
     android:layout_width="0dp"

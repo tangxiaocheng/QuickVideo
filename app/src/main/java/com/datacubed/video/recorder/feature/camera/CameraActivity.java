@@ -34,9 +34,9 @@ import com.datacubed.video.recorder.util.Constant;
 import timber.log.Timber;
 
 /**
- * Separation of concerns
- * This class mainly handles the camera permission management in a isolated environment. If we mix
- * the permission logic and camera logic together, the code could become messy.
+ * Separation of concerns This class mainly handles the camera permission management in a isolated
+ * environment. If we mix the permission logic and camera logic together, the code could become
+ * messy.
  */
 public class CameraActivity extends AppCompatActivity implements Callback {
 
@@ -50,7 +50,9 @@ public class CameraActivity extends AppCompatActivity implements Callback {
     start();
   }
 
-  /** Requests permissions needed for recording video. */
+  /**
+   * Requests permissions needed for recording video.
+   */
   private void start() {
     if (PermissionUtil.hasPermissionsGranted(Constant.VIDEO_PERMISSIONS, this)) {
       bindCameraFragmentToStartRecordingVideo();

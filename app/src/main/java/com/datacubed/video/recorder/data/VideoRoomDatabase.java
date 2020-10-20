@@ -44,7 +44,7 @@ public abstract class VideoRoomDatabase extends RoomDatabase {
         if (INSTANCE == null) {
           INSTANCE =
               Room.databaseBuilder(
-                      context.getApplicationContext(), VideoRoomDatabase.class, VIDEO_DB)
+                  context.getApplicationContext(), VideoRoomDatabase.class, VIDEO_DB)
                   .addCallback(roomDbCallback)
                   .build();
         }

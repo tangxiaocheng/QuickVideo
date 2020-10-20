@@ -31,9 +31,9 @@ public class CameraUtil {
    * width and height are at least as large as the respective requested values, and whose aspect
    * ratio matches with the specified value.
    *
-   * @param choices The list of sizes that the camera supports for the intended output class
-   * @param width The minimum desired width
-   * @param height The minimum desired height
+   * @param choices     The list of sizes that the camera supports for the intended output class
+   * @param width       The minimum desired width
+   * @param height      The minimum desired height
    * @param aspectRatio The aspect ratio
    * @return The optimal {@code Size}, or an arbitrary one if none were big enough
    */
@@ -59,7 +59,9 @@ public class CameraUtil {
     }
   }
 
-  /** Compares two {@code Size}s based on their areas. */
+  /**
+   * Compares two {@code Size}s based on their areas.
+   */
   static class CompareSizesByArea implements Comparator<Size> {
 
     @Override
