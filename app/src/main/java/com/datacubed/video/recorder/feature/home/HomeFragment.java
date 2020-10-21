@@ -14,6 +14,7 @@ import com.datacubed.video.recorder.R;
 import com.datacubed.video.recorder.data.VideoInfo;
 import com.datacubed.video.recorder.data.VideoInfoRepository;
 import com.datacubed.video.recorder.feature.camera.CameraActivity;
+import com.datacubed.video.recorder.network.NetworkActivity;
 import com.datacubed.video.recorder.util.Constant;
 import com.google.android.material.slider.Slider;
 import com.google.android.material.textfield.TextInputEditText;
@@ -45,7 +46,15 @@ public class HomeFragment extends Fragment {
 //      textInputLayout.setError("Title can't be empty");
 //      return;
 //    }
-    startCameraActivity(titleStr);
+
+
+//    startCameraActivity(titleStr);
+    startNetWorkActivity();
+  }
+
+  private void startNetWorkActivity() {
+    Intent intent = new Intent(getContext(), NetworkActivity.class);
+    startActivity(intent);
   }
 
   private void startCameraActivity(String titleStr) {
