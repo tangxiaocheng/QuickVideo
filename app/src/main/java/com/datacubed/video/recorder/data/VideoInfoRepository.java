@@ -2,6 +2,7 @@ package com.datacubed.video.recorder.data;
 
 import android.content.Context;
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource.Factory;
 import java.util.List;
 
 public class VideoInfoRepository {
@@ -21,5 +22,9 @@ public class VideoInfoRepository {
 
   public void insert(VideoInfo videoInfo) {
     VideoRoomDatabase.databaseWriteExecutor.execute(() -> videoInfoDao.insert(videoInfo));
+  }
+  
+  public Factory<Integer, VideoInfo> liveDataOfPagedList(){
+    return videoInfoDao.pageSizeVideo();
   }
 }

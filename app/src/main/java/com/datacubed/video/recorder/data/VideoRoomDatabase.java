@@ -27,16 +27,20 @@ public abstract class VideoRoomDatabase extends RoomDatabase {
           super.onOpen(db);
           databaseWriteExecutor.execute(
               () -> {
-                // TODO
-                //                for (int i = 0; i < 20; i++) {
-                //                  INSTANCE.videoInfoDao()
-                //                      .insert(
-                //                          new VideoInfo("title" + i, 200,
-                // System.currentTimeMillis(), "mock path"));
-                //                }
+//                 TODO
+//                insertMockData();
               });
         }
       };
+
+  private static void insertMockData() {
+    for (int i = 0; i < 100; i++) {
+      INSTANCE.videoInfoDao()
+          .insert(
+              new VideoInfo("title" + i, 150,
+System.currentTimeMillis(), "mock path"));
+    }
+  }
 
   static VideoRoomDatabase getDataBase(final Context context) {
     if (INSTANCE == null) {
