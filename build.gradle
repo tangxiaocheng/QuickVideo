@@ -21,10 +21,11 @@ allprojects {
   }
 }
 
-subprojects { project ->
-  project.tasks.withType(JavaCompile) {
-    dependsOn(installGitHooks)
-  }
+subprojects {
+//  project ->
+//  project.tasks.withType(JavaCompile) {
+//    dependsOn(installGitHooks)
+//  }
 
   repositories {
     jcenter()
@@ -33,9 +34,9 @@ subprojects { project ->
 
 }
 
-googleJavaFormat {
-  toolVersion = "1.7"
-}
+//googleJavaFormat {
+//  toolVersion = "1.7"
+//}
 
 ////////////////////////////////////////////////////////////////////////
 //
@@ -43,13 +44,13 @@ googleJavaFormat {
 ////////////////////////////////////////////////////////////////////////
 
 
-tasks.register('installGitHooks', Copy) {
-  from(file('config/hooks/pre-commit-stub')) {
-    rename 'pre-commit-stub', 'pre-commit'
-  }
-  into file('.git/hooks')
-  fileMode 0777
-}
+//tasks.register('installGitHooks', Copy) {
+//  from(file('config/hooks/pre-commit-stub')) {
+//    rename 'pre-commit-stub', 'pre-commit'
+//  }
+//  into file('.git/hooks')
+//  fileMode 0777
+//}
 ext {
   roomVersion = '2.2.5'
   archLifecycleVersion = '2.2.0'
