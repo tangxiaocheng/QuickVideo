@@ -22,7 +22,6 @@ allprojects {
 }
 
 subprojects {
-
 //  project ->
 //  project.tasks.withType(JavaCompile) {
 //    dependsOn(installGitHooks)

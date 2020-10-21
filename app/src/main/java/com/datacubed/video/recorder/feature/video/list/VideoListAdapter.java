@@ -1,10 +1,18 @@
 package com.datacubed.video.recorder.feature.video.list;
 
+import static com.datacubed.video.recorder.util.Constant.TAG_ABS_PATH;
+
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.provider.MediaStore;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.AsyncListDiffer;
@@ -18,6 +26,8 @@ import java.util.List;
 class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.ViewHolder> {
 
   private static final String DATE_FORMAT = "MM-dd-yyyy hh:mm:ss";
+
+
   /*
    * To improve the refresh efficiency in RecycleView adapter, here I introduced AsyncListDiffer
    * AsyncListDiffer will compare the new data set the old data set before UI refreshment.
@@ -45,28 +55,46 @@ class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.ViewHolder>
 
   @Override
   public int getItemCount() {
-
     return asyncListDiffer.getCurrentList().size();
   }
 
-  static class ViewHolder extends RecyclerView.ViewHolder {
+
+  static class ViewHolder extends RecyclerView.ViewHolder implements
+      OnClickListener {
 
     TextView tvTitle;
     TextView tvDuration;
     TextView tvCreateTime;
+    ImageView iconView;
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);
       tvTitle = itemView.findViewById(R.id.tv_title);
       tvDuration = itemView.findViewById(R.id.tv_duration);
       tvCreateTime = itemView.findViewById(R.id.tv_created_time);
+      iconView = itemView.findViewById(R.id.iconIV);
+      itemView.setOnClickListener(this);
     }
 
     private void bindData(VideoInfo videoInfo) {
+      itemView.setTag(videoInfo);
       long createdTime = videoInfo.getCreatedTime();
       this.tvCreateTime.setText(DateFormat.format(DATE_FORMAT, new Date(createdTime)));
       this.tvDuration.setText(String.valueOf(videoInfo.getDuration()));
       this.tvTitle.setText(videoInfo.getTitle());
+
+      Bitmap bMap = ThumbnailUtils.createVideoThumbnail(videoInfo.getAbsolutePath(),
+          MediaStore.Video.Thumbnails.MICRO_KIND);
+      this.iconView.setImageBitmap(bMap);
+    }
+
+    @Override
+    public void onClick(View view) {
+
+      Intent intent = new Intent(itemView.getContext(), VideoPlayActivity.class);
+      VideoInfo info = (VideoInfo) itemView.getTag();
+      intent.putExtra(TAG_ABS_PATH, info.getAbsolutePath());
+      itemView.getContext().startActivity(intent);
     }
   }
 
