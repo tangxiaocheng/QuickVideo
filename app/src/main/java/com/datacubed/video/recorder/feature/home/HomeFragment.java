@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment {
     etTitle.setText("");
     slider.setValue(DEFAULT_DURATION);
     if (callback != null) {
-      callback.onNewVideoRecorded();
+      callback.onNewVideoRecorded(Constant.VIDEO_LIST);
     }
   }
 
@@ -82,6 +82,6 @@ public class HomeFragment extends Fragment {
   }
 
   public interface Callback {
-    void onNewVideoRecorded();
+    void onNewVideoRecorded(int pos);
   }
 }

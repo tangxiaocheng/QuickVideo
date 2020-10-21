@@ -2,8 +2,8 @@ package com.datacubed.video.recorder.feature.main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.datacubed.video.recorder.R;
 import com.datacubed.video.recorder.feature.home.HomeFragment;
 import com.datacubed.video.recorder.feature.home.HomeFragment.Callback;
@@ -11,35 +11,18 @@ import com.datacubed.video.recorder.feature.video.list.SavedRecordingsFragment;
 import com.datacubed.video.recorder.util.Constant;
 import org.jetbrains.annotations.NotNull;
 
-public class MainAdapter extends FragmentPagerAdapter {
+public class MainAdapter extends FragmentStateAdapter {
 
   private final Callback callback;
 
-  public MainAdapter(FragmentManager fm, Callback callback) {
-    super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+  public MainAdapter(FragmentActivity fa, Callback callback) {
+    super(fa);
     this.callback = callback;
   }
 
-  public static int mapToMenuId(int position) {
-    switch (position) {
-      case Constant.HOME:
-        return R.id.navigation_record_fragment;
-      case Constant.VIDEO_LIST:
-        return R.id.navigation_saved_recordings_fragment;
-      default:
-        throw new IllegalStateException("Only support 2 items");
-    }
-  }
+  public static final int[] IDS_MENU = {R.id.navigation_record_fragment,
+      R.id.navigation_saved_recordings_fragment};
 
-  @NonNull
-  @Override
-  public Fragment getItem(int position) {
-    if (position == 0) {
-      return homeFragment();
-    } else {
-      return new SavedRecordingsFragment();
-    }
-  }
 
   @NotNull
   private Fragment homeFragment() {
@@ -48,8 +31,19 @@ public class MainAdapter extends FragmentPagerAdapter {
     return recordFragment;
   }
 
+
+  @NonNull
   @Override
-  public int getCount() {
+  public Fragment createFragment(int position) {
+    if (position == 0) {
+      return homeFragment();
+    } else {
+      return new SavedRecordingsFragment();
+    }
+  }
+
+  @Override
+  public int getItemCount() {
     return 2;
   }
 }
