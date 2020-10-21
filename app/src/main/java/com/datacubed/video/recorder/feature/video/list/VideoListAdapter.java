@@ -59,8 +59,7 @@ class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.ViewHolder>
   }
 
 
-  static class ViewHolder extends RecyclerView.ViewHolder implements
-      OnClickListener {
+  static class ViewHolder extends RecyclerView.ViewHolder {
 
     TextView tvTitle;
     TextView tvDuration;
@@ -73,11 +72,9 @@ class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.ViewHolder>
       tvDuration = itemView.findViewById(R.id.tv_duration);
       tvCreateTime = itemView.findViewById(R.id.tv_created_time);
       iconView = itemView.findViewById(R.id.iconIV);
-      itemView.setOnClickListener(this);
     }
 
-    private void bindData(VideoInfo videoInfo) {
-      itemView.setTag(videoInfo);
+    private void bindData(final VideoInfo videoInfo) {
       long createdTime = videoInfo.getCreatedTime();
       this.tvCreateTime.setText(DateFormat.format(DATE_FORMAT, new Date(createdTime)));
       this.tvDuration.setText(String.valueOf(videoInfo.getDuration()));
@@ -86,6 +83,7 @@ class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.ViewHolder>
       Bitmap bMap = ThumbnailUtils.createVideoThumbnail(videoInfo.getAbsolutePath(),
           MediaStore.Video.Thumbnails.MICRO_KIND);
       this.iconView.setImageBitmap(bMap);
+      itemView.setOnClickListener(view -> goToPlayVideoActivity(videoInfo));
     }
 
     @Override

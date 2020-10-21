@@ -1,10 +1,17 @@
 package com.datacubed.video.recorder.feature.video.list;
 
+import static com.datacubed.video.recorder.util.Constant.TAG_ABS_PATH;
+
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.provider.MediaStore;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.paging.PagedListAdapter;
@@ -42,20 +49,17 @@ class VideoPageListAdapter extends PagedListAdapter<VideoInfo, VideoPageListAdap
 
   @Override
   public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//    VideoInfo videoInfo = asyncListDiffer.getCurrentList().get(position);
     VideoInfo videoInfo = getItem(position);
     if (videoInfo != null) {
       holder.bindData(videoInfo);
-    }else{
+    } else {
       holder.clear();
     }
   }
 
   @Override
   public int getItemCount() {
-
     return super.getItemCount();
-//    return asyncListDiffer.getCurrentList().size();
   }
 
   static class ViewHolder extends RecyclerView.ViewHolder {
@@ -63,12 +67,14 @@ class VideoPageListAdapter extends PagedListAdapter<VideoInfo, VideoPageListAdap
     TextView tvTitle;
     TextView tvDuration;
     TextView tvCreateTime;
+    ImageView iconView;
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);
       tvTitle = itemView.findViewById(R.id.tv_title);
       tvDuration = itemView.findViewById(R.id.tv_duration);
       tvCreateTime = itemView.findViewById(R.id.tv_created_time);
+      iconView = itemView.findViewById(R.id.iconIV);
     }
 
     private void bindData(VideoInfo videoInfo) {
@@ -76,6 +82,16 @@ class VideoPageListAdapter extends PagedListAdapter<VideoInfo, VideoPageListAdap
       this.tvCreateTime.setText(DateFormat.format(DATE_FORMAT, new Date(createdTime)));
       this.tvDuration.setText(String.valueOf(videoInfo.getDuration()));
       this.tvTitle.setText(videoInfo.getTitle());
+      Bitmap bMap = ThumbnailUtils.createVideoThumbnail(videoInfo.getAbsolutePath(),
+          MediaStore.Video.Thumbnails.MICRO_KIND);
+      this.iconView.setImageBitmap(bMap);
+      itemView.setOnClickListener(view -> goToPlayVideoActivity(videoInfo));
+    }
+
+    private void goToPlayVideoActivity(VideoInfo info) {
+      Intent intent = new Intent(itemView.getContext(), VideoPlayActivity.class);
+      intent.putExtra(TAG_ABS_PATH, info.getAbsolutePath());
+      itemView.getContext().startActivity(intent);
     }
 
     void clear() {
