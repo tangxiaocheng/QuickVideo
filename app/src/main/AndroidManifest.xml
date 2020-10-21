@@ -2,31 +2,35 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.datacubed.video.recorder">
 
-  <uses-feature android:name="android.hardware.camera" />
-
-  <uses-permission android:name="android.permission.CAMERA" />
-  <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
   <application
-    android:name="com.datacubed.video.recorder.feature.main.App"
     android:allowBackup="false"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
+    android:name=".feature.main.App"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.QuickVideo">
     <activity
-      android:name="com.datacubed.video.recorder.feature.main.MainActivity"
-      android:label="@string/app_name">
+      android:name=".feature.video.list.VideoPlayActivity"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+    <activity
+      android:label="@string/app_name"
+      android:name=".feature.main.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-
     <activity
-      android:name="com.datacubed.video.recorder.feature.camera.CameraActivity"
+      android:name=".feature.camera.CameraActivity"
       android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
   </application>
+
+  <uses-feature android:name="android.hardware.camera" />
+
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+  <uses-permission android:name="android.permission.CAMERA" />
+
 </manifest>

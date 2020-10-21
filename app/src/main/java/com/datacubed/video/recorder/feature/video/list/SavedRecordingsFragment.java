@@ -19,10 +19,12 @@ public class SavedRecordingsFragment extends Fragment {
     View root = inflater.inflate(R.layout.fragment_saved_recordings, container, false);
     RecyclerView recyclerView = root.findViewById(R.id.saved_list_rv);
     VideoListAdapter adapter = new VideoListAdapter(getContext());
+
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
     VideoListViewModel videoListViewModel = viewModelProvider.get(VideoListViewModel.class);
     videoListViewModel.videoListLiveData().observe(getViewLifecycleOwner(), adapter::submitList);
+
     return root;
   }
 }
