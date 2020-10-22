@@ -86,11 +86,9 @@ class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.ViewHolder>
       itemView.setOnClickListener(view -> goToPlayVideoActivity(videoInfo));
     }
 
-    @Override
-    public void onClick(View view) {
 
+    private void goToPlayVideoActivity(VideoInfo info) {
       Intent intent = new Intent(itemView.getContext(), VideoPlayActivity.class);
-      VideoInfo info = (VideoInfo) itemView.getTag();
       intent.putExtra(TAG_ABS_PATH, info.getAbsolutePath());
       itemView.getContext().startActivity(intent);
     }
@@ -110,8 +108,4 @@ class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.ViewHolder>
       return oldVideoInfo.equals(newVideoInfo);
     }
   };
-
-  public void submitList(List<VideoInfo> list) {
-    asyncListDiffer.submitList(list);
-  }
 }
