@@ -10,28 +10,29 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.QuickVideo">
-    <activity android:name=".feature.main.MainActivityKt">
+    <activity android:name=".feature.main.EntryActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity android:name=".feature.main.MainActivityKt" />
     <activity
       android:name=".feature.video.list.VideoPlayActivity"
       android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
     <activity
       android:label="@string/app_name"
-      android:name=".feature.main.MainActivity">
-    </activity>
+      android:name=".feature.main.MainActivity" />
     <activity
       android:name=".feature.camera.CameraActivity"
       android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
   </application>
 
   <uses-feature android:name="android.hardware.camera" />
-  <uses-permission android:name="android.permission.CAMERA" />
 
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+  <uses-permission android:name="android.permission.CAMERA" />
 
 </manifest>
