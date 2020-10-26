@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
     exportSchema = false)
 public abstract class VideoRoomDatabase extends RoomDatabase {
 
-  public static final String VIDEO_DB = "videos_db";
+  public static final String VIDEO_DB = "videos_db_java";
   private static final int NUMBER_OF_THREADS = 4;
   static final ExecutorService databaseWriteExecutor =
       Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -26,15 +26,12 @@ public abstract class VideoRoomDatabase extends RoomDatabase {
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
           super.onOpen(db);
           databaseWriteExecutor.execute(
-              () -> {
-//                 TODO
-//                insertMockData();
-              });
+              VideoRoomDatabase::insertMockData);
         }
       };
 
   private static void insertMockData() {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 40; i++) {
       INSTANCE.videoInfoDao()
           .insert(
               new VideoInfo("title" + i, 150,

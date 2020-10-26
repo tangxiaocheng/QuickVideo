@@ -57,17 +57,12 @@ class VideoPageListAdapter extends PagedListAdapter<VideoInfo, VideoPageListAdap
     }
   }
 
-  @Override
-  public int getItemCount() {
-    return super.getItemCount();
-  }
-
   static class ViewHolder extends RecyclerView.ViewHolder {
 
-    TextView tvTitle;
-    TextView tvDuration;
-    TextView tvCreateTime;
-    ImageView iconView;
+    final TextView tvTitle;
+    final TextView tvDuration;
+    final TextView tvCreateTime;
+    final ImageView iconView;
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);

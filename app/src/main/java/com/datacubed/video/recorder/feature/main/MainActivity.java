@@ -14,7 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity implements Callback {
 
   private BottomNavigationView navigation;
-  OnPageChangeCallback onPageChangeCallback = new OnPageChangeCallback() {
+  final OnPageChangeCallback onPageChangeCallback = new OnPageChangeCallback() {
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
       super.onPageScrolled(position, positionOffset, positionOffsetPixels);

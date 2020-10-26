@@ -24,5 +24,5 @@ public interface VideoInfoDao {
   List<VideoInfo> getVideoList();
 
   @Query("SELECT * FROM video_table ORDER BY createdTime DESC")
-   public abstract DataSource.Factory<Integer, VideoInfo> pageSizeVideo();
+  DataSource.Factory<Integer, VideoInfo> pageSizeVideo();
 }
