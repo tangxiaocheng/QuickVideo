@@ -10,7 +10,6 @@ import android.provider.MediaStore;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.datacubed.video.recorder.R;
 import com.datacubed.video.recorder.data.VideoInfo;
 import java.util.Date;
-import java.util.List;
 
 class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.ViewHolder> {
 
@@ -61,10 +59,10 @@ class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.ViewHolder>
 
   static class ViewHolder extends RecyclerView.ViewHolder {
 
-    TextView tvTitle;
-    TextView tvDuration;
-    TextView tvCreateTime;
-    ImageView iconView;
+    final TextView tvTitle;
+    final TextView tvDuration;
+    final TextView tvCreateTime;
+    final ImageView iconView;
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);

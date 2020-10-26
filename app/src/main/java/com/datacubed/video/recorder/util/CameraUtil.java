@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import timber.log.Timber;
 
 public class CameraUtil {
 
@@ -22,7 +23,7 @@ public class CameraUtil {
         return size;
       }
     }
-    Log.e(Constant.TAG, "Couldn't find any suitable video size");
+    Timber.e("Couldn't find any suitable video size");
     return choices[choices.length - 1];
   }
 
@@ -54,7 +55,7 @@ public class CameraUtil {
     if (bigEnough.size() > 0) {
       return Collections.min(bigEnough, new CompareSizesByArea());
     } else {
-      Log.e(Constant.TAG, "Couldn't find any suitable preview size");
+      Timber.e("Couldn't find any suitable preview size");
       return choices[0];
     }
   }

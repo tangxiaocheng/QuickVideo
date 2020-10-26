@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Database(entities = [VideoModel::class], version = 1, exportSchema = false)
-public abstract class VideoRoomDatabaseKt : RoomDatabase() {
+abstract class VideoRoomDatabaseKt : RoomDatabase() {
 
     abstract fun videoModelDao(): VideoModelDao
 

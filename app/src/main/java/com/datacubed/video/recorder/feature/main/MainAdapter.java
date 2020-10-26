@@ -8,7 +8,6 @@ import com.datacubed.video.recorder.R;
 import com.datacubed.video.recorder.feature.home.HomeFragment;
 import com.datacubed.video.recorder.feature.home.HomeFragment.Callback;
 import com.datacubed.video.recorder.feature.video.list.SavedRecordingsFragment;
-import com.datacubed.video.recorder.util.Constant;
 import org.jetbrains.annotations.NotNull;
 
 public class MainAdapter extends FragmentStateAdapter {

@@ -7,7 +7,6 @@ import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 import com.datacubed.video.recorder.data.VideoInfo;
 import com.datacubed.video.recorder.data.VideoInfoRepository;
-import java.util.List;
 
 public class VideoListViewModel extends AndroidViewModel {
 

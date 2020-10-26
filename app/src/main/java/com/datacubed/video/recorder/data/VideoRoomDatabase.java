@@ -26,9 +26,7 @@ public abstract class VideoRoomDatabase extends RoomDatabase {
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
           super.onOpen(db);
           databaseWriteExecutor.execute(
-              () -> {
-                insertMockData();
-              });
+              VideoRoomDatabase::insertMockData);
         }
       };
 

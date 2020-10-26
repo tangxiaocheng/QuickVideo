@@ -8,10 +8,11 @@ import java.util.Objects;
 @Entity(tableName = "video_table")
 public class VideoInfo {
 
-  String title;
-  int duration;
-  long createdTime;
+  final String title;
+  final int duration;
+  final long createdTime;
   @NonNull
+  final
   String absolutePath;
 
   @PrimaryKey(autoGenerate = true)

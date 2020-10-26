@@ -35,7 +35,7 @@
       android:id="@+id/tv_duration"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:text="120s"
+      android:text="@string/time_tip"
       app:layout_constraintLeft_toRightOf="@+id/left_guideline"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/tv_title" />
