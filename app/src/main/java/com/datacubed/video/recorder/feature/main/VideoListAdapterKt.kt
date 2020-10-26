@@ -17,6 +17,8 @@ class VideoListAdapterKt internal constructor(
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTv: TextView = itemView.findViewById(R.id.tv_title)
+        val durationTv: TextView = itemView.findViewById(R.id.tv_duration)
+        val tvCreateTime: TextView = itemView.findViewById(R.id.tv_created_time)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -27,6 +29,8 @@ class VideoListAdapterKt internal constructor(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val current = videoList[position]
         holder.titleTv.text = current.title
+        holder.durationTv.text = current.duration.toString()
+        holder.tvCreateTime.text = current.createdTime.toString()
     }
 
     override fun getItemCount(): Int {
