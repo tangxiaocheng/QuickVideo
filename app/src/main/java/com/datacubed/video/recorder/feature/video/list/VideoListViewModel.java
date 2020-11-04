@@ -16,9 +16,9 @@ public class VideoListViewModel extends AndroidViewModel {
   public VideoListViewModel(Application application) {
     super(application);
     VideoInfoRepository videoInfoRepository = new VideoInfoRepository(application);
-    PagedList.Config config = new PagedList.Config.Builder().setEnablePlaceholders(false)
+    PagedList.Config config = new PagedList.Config.Builder().setEnablePlaceholders(true)
         .setPrefetchDistance(20)
-        .setInitialLoadSizeHint(10).setPageSize(10).build();
+        .setInitialLoadSizeHint(10).setPageSize(5).build();
     liveDataOfPagedList = new LivePagedListBuilder<>(videoInfoRepository.liveDataOfPagedList(),
         config).build();
 
